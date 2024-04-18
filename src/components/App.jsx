@@ -1,6 +1,7 @@
 import React from'react';
 import Phonebook from "./Phonebook/Phonebook";
 
+
 export const App = () => {
   return (
     <div
@@ -15,7 +16,7 @@ export const App = () => {
       }}
     >
       <h1>AEM React homework template</h1>
-
+      
       <Phonebook />
     </div>
   );
