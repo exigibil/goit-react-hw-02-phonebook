@@ -1,7 +1,6 @@
 .phonebookContainer {
     display: flex;
     flex-direction: column;
-    gap: 30px;
     align-items: flex-start;
     border: 1px solid;
     padding: 30px;
@@ -9,17 +8,20 @@
 
     .title {
         margin: 0;
-        font-size: 2rem;
+        font-size: 1.7rem;
         font-family: 'Open Sans', sans-serif;
+        padding-bottom: 10px;
     }
 
     .inputText {
         width: 99.5%;
         height: 30px;
         border: 1px solid rgb(26, 96, 248);
-        font-size: 1rem;
+        font-size: 1.7rem;
         font-family: 'Open Sans', sans-serif;
         padding: 0;
+        padding: 10px;
+        margin-bottom: 35px;
        
     }
 
