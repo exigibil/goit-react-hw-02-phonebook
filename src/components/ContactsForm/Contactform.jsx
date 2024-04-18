@@ -8,8 +8,8 @@ const FILTER_TYPE = {
   INCOMPLETE: 'incomplete',
 };
 
-
-function ContactsForm() {
+function ContactsForm({ onAddContact }) {
+    
   const [contacts, setContacts] = useState([
     { id: '', name: '', number: '', isComplete: false },
   ]);
@@ -19,12 +19,11 @@ function ContactsForm() {
 
   const addContact = () => {
     const newContact = {
-        id: nanoid(),
-        name: name,
-        number: number,
-        isComplete: false,
+      id: nanoid(),
+      name: name,
+      number: number,
     };
-    setContacts([...contacts, newContact]);
+    onAddContact(newContact);
     setName('');
     setNumber('');
   };
@@ -38,7 +37,7 @@ function ContactsForm() {
           type="text"
           name="name"
           value={name}
-          onChange={(e) => setName(e.target.value)}
+          onChange={e => setName(e.target.value)}
           pattern="^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
@@ -51,13 +50,17 @@ function ContactsForm() {
           type="telephone"
           name="phone number"
           value={number}
-          onChange={(e) => setNumber(e.target.value)}
-          pattern="[0-9]*" 
+          onChange={e => setNumber(e.target.value)}
+          pattern="[0-9]*"
           title="Phone number must be a number"
           placeholder="Enter your phone number"
           required
         />
-       <button onClick={addContact} className={styles.buttonContact} type="button">
+        <button
+          onClick={addContact}
+          className={styles.buttonContact}
+          type="button"
+        >
           Add contact
         </button>
       </div>

@@ -32,4 +32,9 @@
         
     }
 
+    .phonebookList {
+            list-style-type: none;  
+    }
+        
+
 }
