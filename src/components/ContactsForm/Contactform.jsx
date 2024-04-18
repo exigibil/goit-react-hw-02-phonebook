@@ -9,7 +9,7 @@ const FILTER_TYPE = {
 };
 
 function ContactsForm({ onAddContact }) {
-    
+
   const [contacts, setContacts] = useState([
     { id: '', name: '', number: '', isComplete: false },
   ]);
@@ -41,6 +41,7 @@ function ContactsForm({ onAddContact }) {
           pattern="^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
+          textarea="true"
           placeholder="Enter your name"
         />
 
@@ -54,6 +55,7 @@ function ContactsForm({ onAddContact }) {
           pattern="[0-9]*"
           title="Phone number must be a number"
           placeholder="Enter your phone number"
+          textarea="true"
           required
         />
         <button

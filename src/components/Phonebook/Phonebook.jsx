@@ -19,7 +19,7 @@ function Phonebook() {
 
       <div className={styles.phonebookContainer}>
         <h2 className={styles.title}>Contacts List</h2>
-        <input className={styles.inputText} type="text" name="search" placeholder="Search.." />
+        <input className={styles.inputText} type="text" name="search" placeholder="Search.." textarea="true" />
         <ul className={styles.phonebookList}>
           {contacts.map((contact, index) => (
             <li key={contact.id}> {index + 1 }. {contact.name}: {contact.number}</li>
