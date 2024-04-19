@@ -3,30 +3,28 @@ import styles from './Contactform.module.css';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
-function ContactsForm({ contacts, onAddContact }) {
+function ContactsForm({ onAddContact }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
   const addContact = () => {
-
+    
     if (!name.trim() || !number.trim()) {
       alert('Please fill in both name and phone number.');
       return;
     }
-    
-    const isDuplicate = contacts.some(
-      contact => contact.name.toLowerCase() === name.toLowerCase()
-    );
-    if (isDuplicate) {
-      alert(`Contact with name '${name}' already exist.`);
-      return;
-    }
+
+  
     const newContact = {
       id: nanoid(),
       name: name,
       number: number,
     };
+
+    
     onAddContact(newContact);
+
+   
     setName('');
     setNumber('');
   };
@@ -43,10 +41,8 @@ function ContactsForm({ contacts, onAddContact }) {
         name="name"
         value={name}
         onChange={e => setName(e.target.value)}
-        pattern="^[a-zA-Z]+(([' -][a-zA-Z ])?[a-zA-Z]*)*$"
-        title="Name may contain only letters, apostrophe, dash, and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-        required
         placeholder="Enter your name"
+        required // This makes the field required
       />
 
       <p className={styles.title}>Phone Number</p>
@@ -56,16 +52,10 @@ function ContactsForm({ contacts, onAddContact }) {
         name="phone number"
         value={number}
         onChange={e => setNumber(e.target.value)}
-        pattern="[0-9]*"
-        title="Phone number must be a number"
         placeholder="Enter your phone number"
-        required
+        required // This makes the field required
       />
-      <button
-        onClick={addContact}
-        className={styles.buttonContact}
-        type="button"
-      >
+      <button onClick={addContact} className={styles.buttonContact} type="button">
         Add contact
       </button>
     </div>
@@ -73,7 +63,6 @@ function ContactsForm({ contacts, onAddContact }) {
 }
 
 ContactsForm.propTypes = {
-  contacts: PropTypes.array.isRequired,
   onAddContact: PropTypes.func.isRequired,
 };
 
