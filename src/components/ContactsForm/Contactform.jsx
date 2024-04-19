@@ -3,7 +3,7 @@ import styles from './Contactform.module.css';
 import { nanoid } from 'nanoid';
 import PropTypes from 'prop-types';
 
-function ContactsForm({ onAddContact }) {
+function ContactsForm({ contacts, onAddContact }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -14,6 +14,11 @@ function ContactsForm({ onAddContact }) {
       return;
     }
 
+    const isDuplicate = contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase());
+    if (isDuplicate) {
+      alert(`Contact with name '${name}' already exists.`);
+      return;
+    }
   
     const newContact = {
       id: nanoid(),
