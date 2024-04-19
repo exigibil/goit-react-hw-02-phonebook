@@ -8,10 +8,18 @@ function ContactsForm({ contacts, onAddContact }) {
   const [number, setNumber] = useState('');
 
   const addContact = () => {
-    const isDuplicate = contacts.some(contact =>contact.name.toLowerCase() === name.toLowerCase());
+
+    if (!name.trim() || !number.trim()) {
+      alert('Please fill in both name and phone number.');
+      return;
+    }
+    
+    const isDuplicate = contacts.some(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
     if (isDuplicate) {
       alert(`Contact with name '${name}' already exist.`);
-      return
+      return;
     }
     const newContact = {
       id: nanoid(),
@@ -53,7 +61,11 @@ function ContactsForm({ contacts, onAddContact }) {
         placeholder="Enter your phone number"
         required
       />
-      <button onClick={addContact} className={styles.buttonContact} type="button">
+      <button
+        onClick={addContact}
+        className={styles.buttonContact}
+        type="button"
+      >
         Add contact
       </button>
     </div>
@@ -61,6 +73,7 @@ function ContactsForm({ contacts, onAddContact }) {
 }
 
 ContactsForm.propTypes = {
+  contacts: PropTypes.array.isRequired,
   onAddContact: PropTypes.func.isRequired,
 };
 
