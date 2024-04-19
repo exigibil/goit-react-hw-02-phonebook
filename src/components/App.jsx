@@ -1,8 +1,9 @@
-import React from'react';
-import Phonebook from "./Phonebook/Phonebook";
+import React from 'react';
+import Phonebook from './Phonebook/Phonebook';
 
 
 export const App = () => {
+ 
   return (
     <div
       style={{
@@ -12,7 +13,7 @@ export const App = () => {
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: '#010101',
       }}
     >
       <h1>AEM React homework template</h1>
